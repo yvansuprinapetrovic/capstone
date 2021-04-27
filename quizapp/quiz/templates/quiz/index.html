@@ -1,0 +1,21 @@
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/index.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Quiz</title>
+    </head>
+    <body>
+        <div id="landing">
+            <h1 style="font-size:80px">Quanto ne sai sull'ambiente?</h1>
+        </div>
+        <div>
+            <h2 style="font-size:40px">L'azione richiede <b>educazione</b>.</h2>
+            <p style="font-size:30px">Testa le tua conoscenze, iniza il quiz!</p>
+            <a href="{% url 'questions' %}">Inizia</a>
+        </div>
+    </body>
+</html>
