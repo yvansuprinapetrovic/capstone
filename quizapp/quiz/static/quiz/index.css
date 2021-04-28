@@ -1,0 +1,31 @@
+body {
+    background: white url("images/landing.jpg") no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Open Sans';
+    font-weight: 2200;
+}
+
+a {
+    background-color: red;
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  
+a:hover {
+    background-color: #555;
+}
+
+a:active {
+    background-color: black;
+}
+
+a:visited {
+    background-color: #ccc;
+}
+
+a:hover {
+    cursor: pointer;
+  }
