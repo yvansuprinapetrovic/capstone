@@ -6,6 +6,9 @@ class Question(models.Model):
     # Question asked
     prompt = models.CharField(max_length=1500)
 
+    # Text with insights on question
+    explanation = models.CharField(max_length=2000, default=None)
+
     def serialize(self):
         return {
             "prompt": self.prompt
@@ -31,3 +34,16 @@ class Answers(models.Model):
 
     def __str__(self):
         return f"{self.text}"
+
+
+class Score(models.Model):
+    # score
+    points = models.IntegerField(default=0)
+
+    # id
+    number = models.CharField(max_length=1000)
+
+    def serialize(self):
+        return {
+            "points": self.points
+        }

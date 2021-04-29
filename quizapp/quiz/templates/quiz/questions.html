@@ -11,36 +11,41 @@
         <script src="{% static 'quiz/questions.js' %}"></script>
     </head>
     <body>
-        <div id="landing">
-            <h1 style="font-size:80px">Quanto ne sai sull'ambiente?</h1>
-        </div>
-
-        <div id="quizContainer">
-            <h1>{{ questionNumber }}. {{ question }}</h1>
-
-            {% for answer in answers %}
-            <ul>
-                <li>
-                    <form class="boxed">
-                        <input type="radio" id="{{ answer.id }}" class="question" name="skills" value="{{ answer.correct }}">
-                        <label for="{{ answer.id }}"> {{ answer }} </label>
-                    </form>
-                </li>
-            </ul>
-            {% endfor %}
-
-            <button data-question="{{ questionNumber }}" id="next" style="display: none;">Prossima domanda</button>
-
-            <div id="explanation" style="display: none;">
-                <h2 id="correct"></h2>
-
-                <p>
-                    The National Environmental Education Act of 1990 required the U.S. Environmental Protection 
-                    Agency (EPA) to be a leader in promoting environmental literacy. 
-                    The EPA later established the Office of Environmental Education to better carry out the act.
-                </p>
+        <div id="wrapper">
+            <div id="img-frame-vertical" style="background-image: white url('images/{{questionNumber}}v.jpg') no-repeat;">
+                <h1 style="font-size:80px">Quanto ne sai sull'ambiente?</h1>
             </div>
 
+            
+            <div id="img-frame-horizontal"></div>
+
+            <div id="quizContainer">
+                <h3>Question {{ questionNumber }} of 10</h3>
+                <h4 style="padding-top: 5xp;">{{ question }}</h4>
+
+                {% for answer in answers %}
+                <ul>
+                    <li>
+                        <form class="boxed">
+                            <input type="radio" id="{{ answer.id }}" class="question" name="skills" value="{{ answer.correct }}">
+                            <label for="{{ answer.id }}"> {{ answer }} </label>
+                        </form>
+                    </li>
+                </ul>
+                {% endfor %}
+
+                <button data-question="{{ questionNumber }}" id="next" style="display: none;">Prossima domanda</button>
+
+                <div id="explanation" style="display: none;">
+                    <h2 id="correct"></h2>
+
+                    <p id="explanation">
+                        {{ question.explanation }}
+                    </p>
+                </div>
+
+            </div>
+            
         </div>
     </body>
 </html>

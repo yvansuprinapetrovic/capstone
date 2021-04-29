@@ -1,25 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Next button event listener
+    // Next question
     document.querySelector('#next').addEventListener('click', function(event) {
       
         console.log('Button clicked!')
 
         // getting the current question number using the this.dataset attribute
         const questionNumber = this.dataset.question;
-        // converting it to an int and adding 1
-        const num = parseInt(questionNumber) + 1;
 
-        // composing new url to get next question
-        var x = "http://127.0.0.1:8000/quiz/questions/";
-        var y = x.concat(num);
+        console.log(questionNumber)
 
-        // using location.replace that disallows user to go back in history
-        location.replace(y);
+        if (parseInt(questionNumber) === 10) {
+          var x = "http://127.0.0.1:8000/quiz/summary";
+          location.replace(y);
+
+        } else {
+          // converting it to an int and adding 1
+          const num = parseInt(questionNumber) + 1;
+
+          // composing new url to get next question
+          var x = "http://127.0.0.1:8000/quiz/questions/";
+          var y = x.concat(num);
+
+          // using location.replace that disallows user to go back in history
+          location.replace(y);
+        }
+        
 
     })
 
-    // Multiple choice event listener
+    // Multiple choice 
     document.querySelectorAll('.question').forEach(function(button) {
       button.onclick = function(event) {
 
@@ -35,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
           // show explanation with heading "correct"
           document.querySelector(`#explanation`).style.display = 'block';
           document.querySelector(`#correct`).innerHTML = "Correct";
+          score();
         } else {
           // show explanation with heading "incorrect"
           document.querySelector(`#explanation`).style.display = 'block';
@@ -47,3 +58,25 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   
   });
+
+
+  // UPDATE SCORE
+  function score() {
+
+    // api call
+    const score = 1;
+
+    fetch('/quiz/score', {
+      method: 'PUT',
+      body: JSON.stringify({
+        points: score
+      }),
+    })
+    .then(result => {
+        // Print result
+        console.log(result);
+    });
+
+    return false;
+  
+  }

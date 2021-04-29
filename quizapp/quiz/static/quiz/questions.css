@@ -1,11 +1,62 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* PAGE LAYOUT */
+
+#wrapper {
+    overflow: hidden;
+}
+
+#img-frame-vertical {
+    background-size: cover;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#img-frame-horizontal {
+    background: white url("images/1h.jpg") no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 50%;
+    float: right;
+}
+
+
 #quizContainer {
     text-align: center;
     background-color: darkcyan;
+    width: 50%;
+    height: 50%;
+    float: right;
+    overflow: scroll;
+}
+
+/* QUIZ LAYOUT */
+
+h3 {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    text-align: left;
+    margin-left: 30px;
+    margin-bottom: 40px;
 }
 
 ul {
     list-style-type: none;
   }
+
+li {
+    margin: 15px;
+}
 
 .boxed label {
     display: inline-block;
@@ -22,3 +73,8 @@ ul {
 .boxed input[type="radio"]:checked + label {
     border: solid 2px green;
 }
+
+#explanation {
+    margin: 15px;
+}
+
