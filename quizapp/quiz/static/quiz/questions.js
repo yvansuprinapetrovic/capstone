@@ -10,11 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log(questionNumber)
 
-        if (parseInt(questionNumber) === 10) {
-          var x = "http://127.0.0.1:8000/quiz/summary";
-          location.replace(y);
-
-        } else {
           // converting it to an int and adding 1
           const num = parseInt(questionNumber) + 1;
 
@@ -24,9 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // using location.replace that disallows user to go back in history
           location.replace(y);
-        }
-        
 
+    })
+
+    // Verify button
+    document.querySelector('#verify').addEventListener('click', function() {
+      console.log('Button clicked')
+      var x = "http://127.0.0.1:8000/quiz/summary";
+      location.replace(x);
     })
 
     // Multiple choice 
@@ -40,19 +40,43 @@ document.addEventListener('DOMContentLoaded', function() {
         const answer = choice.getAttribute('value');
         console.log(answer)
 
-        // if answer is correct
-        if (answer == "True") {
-          // show explanation with heading "correct"
-          document.querySelector(`#explanation`).style.display = 'block';
-          document.querySelector(`#correct`).innerHTML = "Correct";
-          score();
-        } else {
-          // show explanation with heading "incorrect"
-          document.querySelector(`#explanation`).style.display = 'block';
-          document.querySelector(`#correct`).innerHTML = "Incorrect";
-        }
+        // getting question number
+        const questionNumber = document.getElementById('qNumber').innerHTML;
+        console.log(questionNumber)
 
-        document.querySelector(`#next`).style.display = 'block';
+        if (parseInt(questionNumber) == 10) {
+
+          // if answer is correct
+          if (answer == "True") {
+            // show explanation with heading "correct"
+            document.querySelector(`#explanation`).style.display = 'block';
+            document.querySelector(`#correct`).innerHTML = "Correct";
+            document.querySelector(`#verify`).style.display = 'block';
+            score();
+          } else {
+            // show explanation with heading "incorrect"
+            document.querySelector(`#explanation`).style.display = 'block';
+            document.querySelector(`#correct`).innerHTML = "Incorrect";
+            document.querySelector(`#verify`).style.display = 'block';
+          }
+
+        } else {
+
+          // if answer is correct
+          if (answer == "True") {
+            // show explanation with heading "correct"
+            document.querySelector(`#explanation`).style.display = 'block';
+            document.querySelector(`#correct`).innerHTML = "Correct";
+            document.querySelector(`#next`).style.display = 'block';
+            score();
+          } else {
+            // show explanation with heading "incorrect"
+            document.querySelector(`#explanation`).style.display = 'block';
+            document.querySelector(`#correct`).innerHTML = "Incorrect";
+            document.querySelector(`#next`).style.display = 'block';
+          }
+
+        }
 
       }
     })

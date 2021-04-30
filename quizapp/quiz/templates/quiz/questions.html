@@ -35,13 +35,14 @@
                 {% endfor %}
 
                 <button data-question="{{ questionNumber }}" id="next" style="display: none;">Prossima domanda</button>
+                <button id="verify" style="display: none;">Verifica</button>
+
+                <p id="qNumber" style="visibility: hidden;">{{ questionNumber }}</p>
 
                 <div id="explanation" style="display: none;">
                     <h2 id="correct"></h2>
 
-                    <p id="explanation">
-                        {{ question.explanation }}
-                    </p>
+                    <p id="explanation">{{ question.explanation }}</p>
                 </div>
 
             </div>

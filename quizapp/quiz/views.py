@@ -4,13 +4,19 @@ from .models import Question, Answers, Score
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+import random
 
 # Create your views here.
 
+scoreId = []
+
 def index(request):
+
+    number = random.randint(1, 10000)
+    scoreId.append(number)
     
     # creating score for session
-    score = Score(points=0, number=request.session.session_key)
+    score = Score(points=0, number=number)
     score.save()
     
     return render(request, "quiz/index.html")
@@ -20,13 +26,6 @@ def questions(request, num):
         question = Question.objects.get(pk=num)
         answers = Answers.objects.filter(question=question)
         questionNumber = num
-
-        if "score" not in request.session:
-            
-            # If not, create it
-            request.session["score"] = 0
-        
-        request.session["score"] = + 1
 
         return render(request, "quiz/questions.html", {
         "question": question,
@@ -38,9 +37,10 @@ def questions(request, num):
     
 @csrf_exempt
 def score(request):
+    number = scoreId[-1]
     # Query for requested score
     try:
-        currentScore = Score.objects.get(number=request.session.session_key)
+        currentScore = Score.objects.get(number=number)
     except:
         return JsonResponse({"error": "Score not found."}, status=404)
 
@@ -67,8 +67,9 @@ def score(request):
 
 def summary(request):
     # Query for requested score
+    number = scoreId[-1]
     try:
-        currentScore = Score.objects.get(number=request.session.session_key)
+        currentScore = Score.objects.get(number=number)
     except:
         return JsonResponse({"error": "Score not found."}, status=404)
 
