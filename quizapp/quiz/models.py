@@ -47,3 +47,10 @@ class Score(models.Model):
         return {
             "points": self.points
         }
+
+class Backgrounds(models.Model):
+    # image URLs
+    path = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.path}"

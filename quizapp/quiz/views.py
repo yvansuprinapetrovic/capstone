@@ -5,6 +5,7 @@ from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 import random
+from .models import Question, Answers, Score, Backgrounds
 
 # Create your views here.
 
@@ -25,16 +26,19 @@ def questions(request, num):
     if 1 <= num <= 10:
         question = Question.objects.get(pk=num)
         answers = Answers.objects.filter(question=question)
+        image = Backgrounds.objects.get(pk=num)
         questionNumber = num
 
         return render(request, "quiz/questions.html", {
         "question": question,
         "answers": answers,
-        "questionNumber": questionNumber
+        "questionNumber": questionNumber,
+        "image": image
     })
     else:
         raise Http404("No such section")
     
+
 @csrf_exempt
 def score(request):
     number = scoreId[-1]

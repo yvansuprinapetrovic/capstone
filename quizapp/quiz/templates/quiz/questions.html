@@ -10,41 +10,45 @@
         <title>Quiz</title>
         <script src="{% static 'quiz/questions.js' %}"></script>
     </head>
-    <body>
-        <div id="wrapper">
-            <div id="img-frame-vertical">
-                <h1 style="font-size:80px">Quanto ne sai sull'ambiente?</h1>
-                <img id="myImg" src="{% static 'quiz/images/1v.jpg' %}" style="width: 100%;">
-            </div>
-
-            
-            <div id="img-frame-horizontal"></div>
-
+    <body style="background-image: url(' {{ image.path }} ');">  
             <div id="quizContainer">
-                <h3>Question {{ questionNumber }} of 10</h3>
-                <h4 style="padding-top: 5xp;">{{ question }}</h4>
 
-                {% for answer in answers %}
-                <ul>
-                    <li>
-                        <form class="boxed">
-                            <input type="radio" id="{{ answer.id }}" class="question" name="skills" value="{{ answer.correct }}">
-                            <label for="{{ answer.id }}"> {{ answer }} </label>
-                        </form>
-                    </li>
-                </ul>
-                {% endfor %}
+                <!-- QUESTIONS COUNTER & QUESTION  -->
+                
+                <h3>Domanda {{ questionNumber }} di 10</h3>
+                
+                <h2 style="padding-top: 5xp;">{{ question }}</h2>
 
-                <button data-question="{{ questionNumber }}" id="next" style="display: none;">Prossima domanda</button>
-                <button id="verify" style="display: none;">Verifica</button>
-
-                <p id="qNumber" style="visibility: hidden;">{{ questionNumber }}</p>
+                <!-- EXPLANATION APPEARING AFTER ANSWER -->
 
                 <div id="explanation" style="display: none;">
                     <h2 id="correct"></h2>
 
                     <p id="explanation">{{ question.explanation }}</p>
                 </div>
+
+                <!-- MULTIPLE CHOICES -->
+
+                <div id="quiz">
+                    <ul>
+                        {% for answer in answers %}
+                        <li>
+                            <form class="boxed">
+                                <input type="radio" id="{{ answer.id }}" class="question" name="{{ answer.correct }}" value="{{ answer.correct }}">
+                                <label for="{{ answer.id }}"> {{ answer }} </label>
+                                <span class="checkmark"></span>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- NEXT & VERIFIY BUTTONS -->
+
+                <button data-question="{{ questionNumber }}" id="next" class="button" style="display: none;">Prossima domanda</button>
+                <button id="verify" class="button" style="display: none;">Verifica</button>
+
+                <p id="qNumber" style="visibility: hidden;">{{ questionNumber }}</p>
 
             </div>
             

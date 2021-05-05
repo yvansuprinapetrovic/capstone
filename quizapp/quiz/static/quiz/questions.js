@@ -1,26 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Next question
-    document.querySelector('#next').addEventListener('click', function(event) {
+  // Next question
+  document.querySelector('#next').addEventListener('click', function(event) {
       
-        console.log('Button clicked!')
+      console.log('Button clicked!')
 
-        // getting the current question number using the this.dataset attribute
-        const questionNumber = this.dataset.question;
+      // getting the current question number using the this.dataset attribute
+      const questionNumber = this.dataset.question;
 
-        console.log(questionNumber)
+      console.log(questionNumber)
 
-          // converting it to an int and adding 1
-          const num = parseInt(questionNumber) + 1;
+      // converting it to an int and adding 1
+      const num = parseInt(questionNumber) + 1;
 
-          // composing new url to get next question
-          var x = "http://127.0.0.1:8000/quiz/questions/";
-          var y = x.concat(num);
+      // composing new url to get next question
+      var x = "http://127.0.0.1:8000/quiz/questions/";
+      var y = x.concat(num);
 
-          // using location.replace that disallows user to go back in history
-          location.replace(y);
+      // using location.replace that disallows user to go back in history
+      location.replace(y);
 
-    })
+  })
 
     // Verify button
     document.querySelector('#verify').addEventListener('click', function() {
@@ -34,6 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
       button.onclick = function(event) {
 
         console.log('Button clicked!')
+
+        // Disable radio buttons
+        var radios = document.querySelectorAll("input[type=radio]");
+        for (var i = 0, iLen = radios.length; i < iLen; i++) {
+          radios[i].onclick = function() {
+            disableRadio(this.name);
+          }
+        }
         
         // getting the value of the answer
         const choice = event.target;
@@ -103,4 +111,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     return false;
   
+  }
+
+  // Disable radio buttons
+
+  function disableRadio(name) {
+    var x = document.querySelectorAll(`.${name}`);
+    for (var i = 0; i < x.length; i++) {
+      x[i].disabled = true;
+    }
   }
