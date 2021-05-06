@@ -2,6 +2,8 @@
 
 #### For the capstone project of the **CS50 Web Programming with JavaScript and Python** I have created a multiple choice quiz. 
 
+The quiz index page is at http://127.0.0.1:8000/quiz/
+
 ## Django backend
 
 The quiz database is based on four clasess as you will see from the models.py file. First of all, it has a Question and an Answers class, with the question class as foreign key. In this way for each question I am able to have multiple answers but only one correct, which I'm keeping track of with a Boolean field. The Question class also has a field in which I'm storing the explanation to the question. This is shown to the user after an answer is selected, regardless if it's correct or not. 
