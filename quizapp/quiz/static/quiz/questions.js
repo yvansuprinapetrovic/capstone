@@ -56,36 +56,78 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // if answer is correct
           if (answer == "True") {
-            // show explanation with heading "correct"
-            document.querySelector(`#explanation`).style.display = 'block';
-            document.querySelector(`#correct`).innerHTML = "Correct";
-            document.querySelector(`#verify`).style.display = 'block';
+
+            if (window.matchMedia("(max-width: 600px)").matches) {
+              // show explanation with heading "correct"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Correct";
+              document.querySelector(`#verify`).style.display = 'block';
+              // hide question
+              document.querySelector('#qMobile').style.display = 'none';
+
+            } else {
+              // show explanation with heading "correct"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Correct";
+              document.querySelector(`#verify`).style.display = 'block';
+            }
             score();
           } else {
-            // show explanation with heading "incorrect"
-            document.querySelector(`#explanation`).style.display = 'block';
-            document.querySelector(`#correct`).innerHTML = "Incorrect";
-            document.querySelector(`#verify`).style.display = 'block';
+
+            if (window.matchMedia("(max-width: 600px)").matches) {
+              // show explanation with heading "incorrect"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Incorrect";
+              document.querySelector(`#verify`).style.display = 'block';
+              // hide question
+              document.querySelector('#qMobile').style.display = 'none';
+            } else {
+              // show explanation with heading "incorrect"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Incorrect";
+              document.querySelector(`#verify`).style.display = 'block';
+            }
           }
 
         } else {
 
           // if answer is correct
           if (answer == "True") {
-            // show explanation with heading "correct"
-            document.querySelector(`#explanation`).style.display = 'block';
-            document.querySelector(`#correct`).innerHTML = "Correct";
-            document.querySelector(`#next`).style.display = 'block';
+
+            if (window.matchMedia("(max-width: 600px)").matches) {
+
+              // show explanation with heading "correct"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Correct";
+              document.querySelector(`#next`).style.display = 'block';
+              // hide question
+              document.querySelector('#qMobile').style.display = 'none';
+            } else {
+              // show explanation with heading "correct"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Correct";
+              document.querySelector(`#next`).style.display = 'block';
+            }
             score();
           } else {
-            // show explanation with heading "incorrect"
-            document.querySelector(`#explanation`).style.display = 'block';
-            document.querySelector(`#correct`).innerHTML = "Incorrect";
-            document.querySelector(`#next`).style.display = 'block';
+
+            if (window.matchMedia("(max-width: 600px)").matches) {
+
+              // show explanation with heading "incorrect"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Incorrect";
+              document.querySelector(`#next`).style.display = 'block';
+              // hide question
+              document.querySelector('#qMobile').style.display = 'none';
+
+            } else {
+              // show explanation with heading "incorrect"
+              document.querySelector(`#explanation`).style.display = 'block';
+              document.querySelector(`#correct`).innerHTML = "Incorrect";
+              document.querySelector(`#next`).style.display = 'block';
+            }
           }
-
         }
-
       }
     })
   

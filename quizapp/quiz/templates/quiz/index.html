@@ -9,13 +9,24 @@
         <title>Quiz</title>
     </head>
     <body>
-        <div id="landing">
-            <h1 style="font-size:80px">Quanto ne sai sull'ambiente?</h1>
+
+        <div id="mobile">
+
+            <div id="title">
+                <h1>How much do you know about the environment?</h1>
+            </div>
+
+            <div id="subtitle">
+                <h2>Action requires education.</h2>
+                <p>Test your knowledge with this multiple choice quiz.</p>
+            </div>
+
+            <div id="button">
+                <a href="{% url 'questions' 1 %}">Start Quiz</a>
+            </div>
+
         </div>
-        <div>
-            <h2 style="font-size:40px">L'azione richiede <b>educazione</b>.</h2>
-            <p style="font-size:30px">Testa le tua conoscenze, iniza il quiz!</p>
-            <a href="{% url 'questions' 1 %}">Inizia</a>
-        </div>
+
     </body>
+
 </html>

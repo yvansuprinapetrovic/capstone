@@ -14,22 +14,26 @@
             <div id="quizContainer">
 
                 <!-- QUESTIONS COUNTER & QUESTION  -->
-                
-                <h3>Domanda {{ questionNumber }} di 10</h3>
-                
-                <h2 style="padding-top: 5xp;">{{ question }}</h2>
 
-                <!-- EXPLANATION APPEARING AFTER ANSWER -->
+                <div id="header">
 
-                <div id="explanation" style="display: none;">
-                    <h2 id="correct"></h2>
+                    <h3 style="margin-bottom: 20px;">Domanda {{ questionNumber }} di 10</h3>
+                    
+                    <h2 style="margin-bottom: 20px;" id="qMobile">{{ question }}</h2>
 
-                    <p id="explanation">{{ question.explanation }}</p>
+                    <!-- EXPLANATION APPEARING AFTER ANSWER -->
+
+                    <div id="explanation" style="display: none;">
+                        <h2 id="correct"></h2>
+
+                        <p id="explanationP" style="margin-bottom: 20px;">{{ question.explanation }}</p>
+                    </div>
+
                 </div>
 
                 <!-- MULTIPLE CHOICES -->
 
-                <div id="quiz">
+                <div id="content">
                     <ul>
                         {% for answer in answers %}
                         <li>
@@ -45,10 +49,14 @@
 
                 <!-- NEXT & VERIFIY BUTTONS -->
 
-                <button data-question="{{ questionNumber }}" id="next" class="button" style="display: none;">Prossima domanda</button>
-                <button id="verify" class="button" style="display: none;">Verifica</button>
+                <div id="footer">
 
-                <p id="qNumber" style="visibility: hidden;">{{ questionNumber }}</p>
+                    <button data-question="{{ questionNumber }}" id="next" class="button" style="display: none;">Prossima domanda</button>
+                    <button id="verify" class="button" style="display: none;">Verifica</button>
+
+                    <p id="qNumber" style="visibility: hidden;">{{ questionNumber }}</p>
+
+                </div>
 
             </div>
             

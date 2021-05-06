@@ -1,9 +1,30 @@
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/summary.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
     <header>
         <title>Summary</title>
     </header>
     <body>
-        <h1>You scored {{ final }} out of 10!</h1>
+        <div id="container">
+            {% if final <= 5 %}
+                <h1 id="score">You scored {{ final }} out of 10.</h1>
+                <p>Didn't go so well? Don't worry, you've got a whole world to explore.</p>
+            {% endif %}
+
+            {% if final >= 6 and final <= 7 %}
+                <h1 id="score">You scored {{ final }} out of 10.</h1>
+                <p>Great job! Time to discover more about the environment.</p>
+            {% endif %}
+
+            {% if final > 7 %}
+                <h1 id="score">You scored {{ final }} out of 10.</h1>
+                <p>Wow. You know your way around the environment and its issues.</p>
+            {% endif %}
+        </div>
     </body>
 </html>
