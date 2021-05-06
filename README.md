@@ -1,4 +1,4 @@
-# environmental-quiz
+# CS50 Capstone
 
 #### For the capstone project of the **CS50 Web Programming with JavaScript and Python** I have created a multiple choice quiz. 
 
